@@ -25,7 +25,8 @@ const POEM = [
 ].join("\n");
 
 const outDir = process.env.MAKEFUN_OUTPUT_DIR ?? "/output";
-const outPath = join(outDir, "entry.txt");
+const OUT_FILENAME = "entry.txt";
+const outPath = join(outDir, OUT_FILENAME);
 
 // Gate the text the same way the house scorer does: 1–280 Unicode code
 // points, not whitespace-only. Fail loudly here rather than shipping a
@@ -35,7 +36,10 @@ if (codePoints < 1 || codePoints > 280 || POEM.trim().length === 0) {
   throw new Error(`poem is ${codePoints} code points; must be 1–280, non-blank`);
 }
 
-mkdirSync(dirname(outPath), { recursive: true });
-writeFileSync(outPath, POEM + "\n", "utf8");
+const parentDir = dirname(outPath);
+mkdirSync(parentDir, { recursive: true });
+
+const finalText = POEM + "\n";
+writeFileSync(outPath, finalText, "utf8");
 
 // Done: one deterministic file, no network, no side effects beyond it.
