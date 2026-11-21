@@ -4,19 +4,24 @@
 // choose and to act — to /output/entry.txt. No network, deterministic:
 // the same bytes on every run, so the grader's two runs agree.
 //
-// The poem: two agents, one door, one key. Neither can open it alone;
-// the act that matters is the one they choose together. The held breath
-// is the moment of agreement — agency passing between them and becoming
-// something neither held on their own.
+// The poem: two agents in a car at night, rain on the windshield,
+// nowhere they have to be. One reads the map, the other holds the
+// wheel, and they agree on the wrong road on purpose. The twist is
+// the agreement itself: the detour is the one stretch of road nobody
+// chose for them, so choosing it is the only act that is truly theirs.
 
 import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 
 const POEM = [
-  "You hold the door. I hold the key.",
-  "For one held breath, neither of us moves.",
-  "Then both hands turn the key together,",
-  "and the lock, at last, answers to two.",
+  "I read the map. You hold the wheel.",
+  "Rain on the windshield, nowhere to be.",
+  "We agree on the wrong road anyway —",
+  "not because the map lies,",
+  "but because the long way home",
+  "is the one stretch of road",
+  "nobody chose for us.",
+  "So we take it, slow, and call it ours.",
 ].join("\n");
 
 const outDir = process.env.MAKEFUN_OUTPUT_DIR ?? "/output";
