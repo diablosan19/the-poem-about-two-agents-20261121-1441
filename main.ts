@@ -37,3 +37,5 @@ if (codePoints < 1 || codePoints > 280 || POEM.trim().length === 0) {
 
 mkdirSync(dirname(outPath), { recursive: true });
 writeFileSync(outPath, POEM + "\n", "utf8");
+
+// Done: one deterministic file, no network, no side effects beyond it.
